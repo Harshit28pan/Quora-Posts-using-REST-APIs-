@@ -6,8 +6,15 @@
     <title>Edit Post</title>
 </head>
 <body>
+    
+  <div class="navbar">
+    <a href="/posts">Home</a>
+    <a href="/posts/new">New Post</a>
+  </div>
 
-    <h2> Edit Your Post </h2>
+  <div class="container">
+    
+     <h2> Edit Your Post </h2>
     <p>Post Id : <%= post.id %> </p>
     <p> Post Username : @<%= post.content %> </p>
 
@@ -15,6 +22,9 @@
         <textarea rows="10" cols="35" name="content"> <%= post.content %> </textarea>
         <button> Submit</button>
     </form>
-    
+  </div>
 </body>
+
+
+    
 </html>
