@@ -12,6 +12,9 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 //css ke liye
 app.use( express.static(path.join(__dirname , "public")));
+//html form ko accept krne ke liye patch request
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 //array mei data store krayenge bcz abhi database nhi connect kiye hai
 let posts = [
@@ -63,20 +66,26 @@ app.get("/posts/:id", (req,res) =>{
 app.patch("/posts/:id" , (req,res) => {
 let  {id} =req.params;
 let newcontent = req.body.content;
- let post=posts.find((p) => id=== p.id);
-
+let post=posts.find((p) => id === p.id);
 post.content = newcontent ;
-console.log(post);
-console.log(id);
-res.send("path request");
+res.redirect("/posts");
+
 
 });
 
 app.get("/posts/:id/edit" , (req,res) => {
     let {id} = req.params;
     let post=posts.find((p) => id=== p.id);
-    res.render=("edit.ejs", {post});
+    res.render=("edit.ejs" , { post });
     
+});
+
+app.delete("/posts/:id", (req,res) => {
+    let {id} = req.params;
+    let post = posts.find((p) => id === p.id);
+    posts=posts.filter((p) => id !== p.id);
+    res.redirect("/posts");
+
 
 });
 app.listen(port,()=>{
