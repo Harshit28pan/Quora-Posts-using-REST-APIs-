@@ -59,6 +59,26 @@ app.get("/posts/:id", (req,res) =>{
     }
 
 });
+
+app.patch("/posts/:id" , (req,res) => {
+let  {id} =req.params;
+let newcontent = req.body.content;
+ let post=posts.find((p) => id=== p.id);
+
+post.content = newcontent ;
+console.log(post);
+console.log(id);
+res.send("path request");
+
+});
+
+app.get("/posts/:id/edit" , (req,res) => {
+    let {id} = req.params;
+    let post=posts.find((p) => id=== p.id);
+    res.render=("edit.ejs", {post});
+    
+
+});
 app.listen(port,()=>{
     console.log("listening to port : 8080");
 }); 
