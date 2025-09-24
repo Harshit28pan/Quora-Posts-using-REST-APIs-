@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+    
+  <div class="navbar">
+    <a href="/posts">Home</a>
+    <a href="/posts/new">New Post</a>
+  </div>
+
+  <div class="container">
+    
+
     <h2> Here is your post in detail</h2>
      
      <p>Post Id: <%= post.id %></p>
@@ -16,5 +26,8 @@
         <h3 class="user"> UserName : @<%= post.username %></h3>
         <h4 class="content">Content : <%= post.content %></h4>
      </div>
+  </div>
 </body>
+
+    
 </html>
